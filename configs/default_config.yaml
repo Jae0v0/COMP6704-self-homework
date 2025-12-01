@@ -1,0 +1,51 @@
+# Default configuration for Multi-UAV Edge Computing Network Optimization
+
+# System parameters
+num_uavs: 30
+num_users: 80
+num_services: 5
+num_time_slots: 30
+area_size: 1000.0  # meters
+
+# UAV parameters
+max_speed: 20.0  # m/s
+min_distance: 50.0  # meters
+altitude: 100.0  # meters
+dt: 1.0  # seconds
+
+# Communication parameters
+bandwidth: 1000000  # Hz
+user_power: 0.1  # W
+noise_power: 1e-10  # W
+path_loss_exponent: 2.0
+reference_gain: 0.001
+backhaul_rate: 10000000  # bits/s
+
+# Task parameters
+data_size: 1000000  # bits
+cpu_cycles_per_bit: 1000.0
+max_delay: 1.0  # seconds
+service_sizes: [10, 20, 15, 25, 30]  # MB
+storage_capacities: 100  # MB per UAV (will be replicated)
+compute_capacities: 1000000000  # Hz per UAV (will be replicated)
+
+# Energy parameters (based on mappo-xwc-code)
+battery_capacity: 5000.0  # J
+blade_power: 59.03  # P0 (W) - Blade profile power
+induced_power: 79.07  # Pi (W) - Induced power
+tip_speed: 120.0  # Utip (m/s) - Tip speed of rotor
+fuselage_drag_coefficient: 0.6  # d0 - Fuselage drag coefficient
+air_density: 1.225  # rho (kg/m^3) - Air density
+rotor_disk_area: 0.5030  # A (m^2) - Rotor disk area
+rotor_solidity: 0.05  # s - Rotor solidity
+mean_rotor_induced_velocity: 3.6  # V0 (m/s) - Mean rotor induced velocity
+computation_coefficient: 1e-27  # kappa (J·s^2/cycle^3) - Computation energy coefficient
+communication_power: 10.0  # W
+
+# Algorithm parameters
+mpc_horizon: 5
+max_iterations: 10
+tolerance: 0.001
+penalty_factor: 100.0
+trajectory_penalty: 1000.0
+
